@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"
+    />
+    <title>Serverless App on Closed Network Sample</title>
+  </head>
+  <body>
+    <h1 id="ecs">This will be replaced by following script.</h1>
+    <h1 id="apigw">This will be replaced by following script.</h1>
+    <script>
+      const ALB_ENDPOINT = "http://###ALB_ENDPOINT###";
+      const APIGW_ENDPOINT = "https://###APIGW_ENDPOINT###";
+
+      async function fetchFromEcs() {
+        const response = await fetch(ALB_ENDPOINT);
+        const data = await response.json();
+        return data;
+      }
+
+      async function fetchFromApiGateway() {
+        const response = await fetch(APIGW_ENDPOINT);
+        const data = await response.json();
+        return data;
+      }
+
+      fetchFromEcs().then(
+        (data) => (document.getElementById("ecs").innerHTML = data.message)
+      );
+
+      fetchFromApiGateway().then(
+        (data) => (document.getElementById("apigw").innerHTML = data.message)
+      );
+    </script>
+  </body>
+</html>
