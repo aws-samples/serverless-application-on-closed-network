@@ -2,7 +2,8 @@
 
 ## このリポジトリについて
 
-閉域ネットワーク内にサーバレスな web アプリケーションを構成するサンプルです。
+閉域ネットワーク内にサーバレスな web アプリケーションを構成するサンプルです。  
+別途[Blog](https://aws-samples.github.io/jp-prototyping-blog/closed-serverless-app/)も併せてご参照ください。
 
 ## 背景
 
