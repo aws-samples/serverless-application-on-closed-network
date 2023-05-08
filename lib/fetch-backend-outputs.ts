@@ -1,4 +1,5 @@
 import * as cloudformation from "@aws-sdk/client-cloudformation";
+import { CloudFormationServiceException } from "@aws-sdk/client-cloudformation";
 import * as cdk from "aws-cdk-lib";
 
 export type StackOutputs = {
@@ -18,7 +19,18 @@ export const fetchBackendOutputs = async (
     const cmd = new cloudformation.DescribeStacksCommand({
       StackName: stack.stackName,
     });
-    const res = await client.send(cmd);
+    let res;
+    try {
+      res = await client.send(cmd);
+    } catch (error) {
+      if (
+        error instanceof CloudFormationServiceException &&
+        error.name === "ValidationError"
+      ) {
+        return undefined;
+      }
+      throw error;
+    }
 
     return res.Stacks?.[0]?.Outputs?.reduce((result, output) => {
       if (output.OutputKey && output.OutputValue) {
