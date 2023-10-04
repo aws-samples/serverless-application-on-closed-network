@@ -20,7 +20,7 @@ export class TestStack extends cdk.Stack {
 
     const existingVpc = props.network.vpc;
     const testVpc = new ec2.Vpc(this, "TestVpc", {
-      cidr: "10.1.0.0/16",
+      ipAddresses: ec2.IpAddresses.cidr("10.1.0.0/16"),
       maxAzs: 2,
     });
 

@@ -16,7 +16,7 @@ export class Network extends Construct {
      * Network definitions construct
      */
     const vpc = new ec2.Vpc(this, "Vpc", {
-      cidr: ec2.Vpc.DEFAULT_CIDR_RANGE, // 10.0.0.0/16
+      ipAddresses: ec2.IpAddresses.cidr("10.0.0.0/16"),
       maxAzs: 2,
       // configure private isolated subnets
       subnetConfiguration: [
