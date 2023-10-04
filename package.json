@@ -1,5 +1,5 @@
 {
-  "name": "serverless-app-on-closed-network",
+  "name": "@aws-samples/serverless-app-on-closed-network",
   "version": "0.1.0",
   "bin": {
     "serverless-app-on-closed-network": "bin/serverless-app-on-closed-network.js"
