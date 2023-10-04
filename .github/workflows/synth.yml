@@ -13,4 +13,4 @@ jobs:
           node-version: "18.x"
       - run: |
           npm ci
-          npx cdk synth --all
+          npx cdk synth ServerlessAppOnClosedNetworkStack
